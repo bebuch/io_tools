@@ -9,16 +9,13 @@
 #ifndef _io_tools__std_vector_io__hpp_INCLUDED_
 #define _io_tools__std_vector_io__hpp_INCLUDED_
 
-#include <bitmap/io.hpp>
+#include "expect.hpp"
 
 #include <iostream>
 #include <vector>
 
 
 namespace io_tools{
-
-
-	namespace io = ::bitmap::io;
 
 
 	template < typename charT, typename traits, typename T >
@@ -44,7 +41,7 @@ namespace io_tools{
 		std::basic_istream< charT, traits >& is,
 		std::vector< T >& data
 	){
-		if(!io::equal(is, '{')) return is;
+		if(!expect(is, '{')) return is;
 
 		std::vector< T > tmp;
 		{
@@ -54,8 +51,8 @@ namespace io_tools{
 		}
 
 		for(;;){
-			if(!io::test(is, ',')){
-				if(!io::equal(is, '}')) return is;
+			if(!is_next(is, ',')){
+				if(!expect(is, '}')) return is;
 
 				data = std::move(tmp);
 

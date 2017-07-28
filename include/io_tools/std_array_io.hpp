@@ -9,16 +9,13 @@
 #ifndef _io_tools__std_array_io__hpp_INCLUDED_
 #define _io_tools__std_array_io__hpp_INCLUDED_
 
-#include <bitmap/io.hpp>
+#include "expect.hpp"
 
 #include <iostream>
 #include <array>
 
 
 namespace io_tools{
-
-
-	namespace io = ::bitmap::io;
 
 
 	template < typename charT, typename traits, typename T, std::size_t N >
@@ -44,18 +41,18 @@ namespace io_tools{
 		std::basic_istream< charT, traits >& is,
 		std::array< T, N >& data
 	){
-		if(!io::equal(is, '{')) return is;
+		if(!expect(is, '{')) return is;
 
 		std::array< T, N > tmp;
 		if(N >= 1){
 			is >> tmp[0];
 			for(std::size_t i = 1; i < N; ++i){
-				if(!io::equal(is, ',')) return is;
+				if(!expect(is, ',')) return is;
 				is >> tmp[i];
 			}
 		}
 
-		if(!io::equal(is, '}')) return is;
+		if(!expect(is, '}')) return is;
 
 		data = std::move(tmp);
 

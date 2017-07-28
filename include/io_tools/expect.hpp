@@ -9,7 +9,7 @@
 #ifndef _io_tools__expect__hpp_INCLUDED_
 #define _io_tools__expect__hpp_INCLUDED_
 
-#include <istream>
+#include "is_next.hpp"
 
 
 namespace io_tools{
@@ -31,7 +31,7 @@ namespace io_tools{
 		std::basic_istream< CharT, Traits >& is,
 		CharT const& should_be
 	){
-		auto result = test(is, should_be);
+		auto result = is_next(is, should_be);
 		if(!result) is.setstate(std::ios_base::failbit);
 		return result;
 	}
