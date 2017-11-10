@@ -15,7 +15,7 @@
 #include <vector>
 
 
-namespace io_tools{
+namespace io_tools{ namespace std_vector{
 
 
 	template < typename charT, typename traits, typename T >
@@ -68,7 +68,7 @@ namespace io_tools{
 	}
 
 
-}
+} }
 
 
 #endif

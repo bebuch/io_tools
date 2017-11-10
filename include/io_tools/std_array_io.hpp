@@ -15,7 +15,7 @@
 #include <array>
 
 
-namespace io_tools{
+namespace io_tools{ namespace std_array{
 
 
 	template < typename charT, typename traits, typename T, std::size_t N >
@@ -60,7 +60,7 @@ namespace io_tools{
 	}
 
 
-}
+} }
 
 
 #endif
