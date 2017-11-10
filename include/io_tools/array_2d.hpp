@@ -15,6 +15,11 @@
 namespace io_tools{ namespace array_2d{
 
 
+	// Use it by:
+	//
+	// using ::io_tools::array_2d::operator<<;
+
+
 	template <
 		typename CharT, typename Traits,
 		typename T, std::size_t Y, std::size_t X >
@@ -44,6 +49,7 @@ namespace io_tools{ namespace array_2d{
 	){
 		return os << *m;
 	}
+
 
 } }
 
