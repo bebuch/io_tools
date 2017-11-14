@@ -18,9 +18,9 @@
 namespace io_tools{ namespace std_vector{
 
 
-	template < typename charT, typename traits, typename T >
-	std::basic_ostream< charT, traits >& operator<<(
-		std::basic_ostream< charT, traits >& os,
+	template < typename CharT, typename Traits, typename T >
+	std::basic_ostream< CharT, Traits >& operator<<(
+		std::basic_ostream< CharT, Traits >& os,
 		std::vector< T > const& data
 	){
 		os << '{';
@@ -36,9 +36,9 @@ namespace io_tools{ namespace std_vector{
 	}
 
 
-	template < typename charT, typename traits, typename T >
-	std::basic_istream< charT, traits >& operator>>(
-		std::basic_istream< charT, traits >& is,
+	template < typename CharT, typename Traits, typename T >
+	std::basic_istream< CharT, Traits >& operator>>(
+		std::basic_istream< CharT, Traits >& is,
 		std::vector< T >& data
 	){
 		if(!expect(is, '{')) return is;
