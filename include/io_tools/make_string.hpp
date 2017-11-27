@@ -33,7 +33,10 @@ namespace io_tools{
 		std::ostringstream os;
 		os << std::boolalpha;
 		os << static_cast< T&& >(arg);
-		((os << separator) << ... << static_cast< Ts&& >(args));
+		([&os, &separator](auto&& arg){
+				os << separator << static_cast< decltype(arg)&& >(arg);
+			}(static_cast< Ts&& >(args)), ...);
+
 		return os.str();
 	}
 
