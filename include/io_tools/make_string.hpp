@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// Copyright (c) 2011-2017 Benjamin Buch
+// Copyright (c) 2011-2018 Benjamin Buch
 //
 // https://github.com/bebuch/io_tools
 //
