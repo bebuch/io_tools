@@ -32,3 +32,12 @@ TEST(extract_if_is, test_without_data){
 	EXPECT_TRUE(!io_tools::extract_if_is(is, 'n'));
 	ASSERT_TRUE(is);
 }
+
+TEST(extract_if_is, test_invalid_state){
+	std::istringstream is("y");
+
+	is.setstate(std::ios_base::failbit);
+
+	EXPECT_TRUE(!io_tools::extract_if_is(is, 'y'));
+	ASSERT_TRUE(!is);
+}

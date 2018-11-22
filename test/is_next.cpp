@@ -41,3 +41,12 @@ TEST(is_next, test_without_data){
 	EXPECT_TRUE(!io_tools::is_next(is, 'n'));
 	ASSERT_TRUE(is);
 }
+
+TEST(is_next, test_invalid_state){
+	std::istringstream is("y");
+
+	is.setstate(std::ios_base::failbit);
+
+	EXPECT_TRUE(!io_tools::is_next(is, 'y'));
+	ASSERT_TRUE(!is);
+}
