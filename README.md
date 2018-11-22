@@ -152,7 +152,7 @@ void input_example(){
 
 #### `range_to_string(sequence, delimiter = ", ")` (C++17)
 
-This tools prints every element of a sequence into a string separated by `delimiter`. A sequence is an object for which you can iterate from begin to end.
+This tools prints every element of a sequence into a string separated by `delimiter`. A sequence is an object for which you can iterate from begin to end. The print is implemented as output on an `std::ostringstream`.
 
 ```cpp
 #include <io_tools/range_to_string.hpp>
