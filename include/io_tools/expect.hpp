@@ -17,18 +17,30 @@ namespace io_tools{
 
 	template < typename ShouldBe >
 	inline bool expect(std::istream& is, ShouldBe const& should_be){
-		ShouldBe in;
-		if(is && is >> in && in == should_be){
-			return true;
-		}else{
+		if(is){
+			auto pos = is.tellg();
+			ShouldBe in;
+			if(is >> in){
+				if(in == should_be){
+					return true;
+				}
+				is.seekg(pos);
+			}else if(is.eof()){
+				is.clear();
+				is.seekg(pos);
+			}
+
 			is.setstate(std::ios_base::failbit);
-			return false;
 		}
+		return false;
+
 	}
 
 	inline bool expect(std::istream& is, char const should_be){
 		auto result = extract_if_is(is, should_be);
-		if(!result) is.setstate(std::ios_base::failbit);
+		if(!result){
+			is.setstate(std::ios_base::failbit);
+		}
 		return result;
 	}
 
