@@ -10,6 +10,7 @@ All tools are header only. Add the include directory to your header search path.
 - [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for C arrays
 - [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for std::array
 - [I/O operator](#io-operators-for-stdvector-c11) for std::vector
+- Convert [sequences to strings](#range_to_stringsequence-delimiter-c17)
 
 ## Notes
 
@@ -146,6 +147,27 @@ void input_example(){
     is >> array; // array.size() == 2 && array[0] == 1 && array[1] == 2
 }
 ```
+
+### String creation
+
+#### `range_to_string(sequence, delimiter = ", ")` (C++17)
+
+This tools prints every element of a sequence into a string separated by `delimiter`. A sequence is an object for which you can iterate from begin to end.
+
+```cpp
+#include <io_tools/range_to_string.hpp>
+#include <vector>
+
+int main(){
+    std::vector< int > s1{1, 2, 3};
+    std::cout << range_to_string(s1) << '\n'; // "1, 2, 3"
+
+    int s1[3] = {1, 2, 3};
+    std::cout << range_to_string(s2, "x") << '\n'; // "1x2x3"
+}
+```
+
+### Other tools
 
 #### `name_generator`
 

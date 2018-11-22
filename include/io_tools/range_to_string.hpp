@@ -10,7 +10,6 @@
 #define _io_tools__range_to_string__hpp_INCLUDED_
 
 #include <sstream>
-#include <type_traits>
 #include <string_view>
 
 
