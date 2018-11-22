@@ -22,9 +22,8 @@ namespace io_tools{
 	/// \brief Convert a time_point into a string for directory names
 	///
 	/// Output format: YYYYMMDD_hhmmss
-	template < typename CharT, typename Traits >
-	inline std::basic_ostream< CharT, Traits >& time_to_dir_string(
-		std::basic_ostream< CharT, Traits >& os,
+	inline std::ostream& time_to_dir_string(
+		std::ostream& os,
 		std::chrono::system_clock::time_point const& time =
 			std::chrono::system_clock::now()
 	){
@@ -41,30 +40,16 @@ namespace io_tools{
 			<< std::setw(2) << datetime.tm_sec;
 	}
 
-
-	/// \brief Date and time as basic_string of type CharT
-	template <
-		typename CharT,
-		typename Traits = std::char_traits< CharT >,
-		typename Allocator = std::allocator< CharT >
-	>
-	inline std::basic_string< CharT, Traits, Allocator > time_to_dir_string(
-		std::chrono::system_clock::time_point const& time =
-			std::chrono::system_clock::now()
-	){
-		std::basic_ostringstream< CharT, Traits, Allocator > os;
-
-		time_to_dir_string(os, time);
-
-		return os.str();
-	}
-
 	/// \brief Date and time as string for directory names
 	inline std::string time_to_dir_string(
 		std::chrono::system_clock::time_point const& time =
 			std::chrono::system_clock::now()
 	){
-		return time_to_dir_string< char >(time);
+		std::ostringstream os;
+
+		time_to_dir_string(os, time);
+
+		return os.str();
 	}
 
 
