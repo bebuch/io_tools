@@ -4,6 +4,13 @@ Some simple tools for input and output operations
 
 All tools are header only. Add the include directory to your header search path.
 
+**Provided tools**:
+
+- [Input parsing](#basic-stdistream-tools-c11) helpers
+- [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for C arrays
+- [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for std::array
+- [I/O operator](#io-operators-for-stdvector-c11) for std::vector
+
 ## Notes
 
 The stream in the C++ standard library don't support `char8_t`, `char16_t` and `char32_t`!
@@ -34,7 +41,7 @@ Note that `expected` can be any type with overloaded input operator.
 
 ### I/O for sequence types (C++11)
 
-#### C-Arrays and `std::array` (C++11)
+#### I/O operators for C-Arrays and `std::array` (C++11)
 
 This dosn't work with arrays of size `0`!
 
@@ -101,7 +108,7 @@ void input_example(){
 }
 ```
 
-#### `std::vector`  (C++11)
+#### I/O operators for `std::vector` (C++11)
 
 For both input and output streams the I/O operators are overloaded. In include `io_tools/io_std_vector.hpp`.
 
