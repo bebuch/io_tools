@@ -11,6 +11,8 @@ All tools are header only. Add the include directory to your header search path.
 - [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for std::array
 - [I/O operator](#io-operators-for-stdvector-c11) for std::vector
 - Convert [sequences to strings](#range_to_stringsequence-delimiter-c17)
+- [Variadic output](#make_stringargs-) via `std::ostringstream`
+- [Variadic output](#make_string_separated_bydelimiter-args-) via `std::ostringstream` with delimiter
 
 ## Notes
 
@@ -166,6 +168,14 @@ int main(){
     std::cout << range_to_string(s2, "x") << '\n'; // "1x2x3"
 }
 ```
+
+#### `make_string(args ...)`
+
+Prints every given argument on an `std::ostringstream`. By default `std::boolalpha` is enabled.
+
+#### `make_string_separated_by(delimiter, args ...)`
+
+Prints every given argument on an `std::ostringstream` separated by `delimiter`. By default `std::boolalpha` is enabled.
 
 ### Other tools
 

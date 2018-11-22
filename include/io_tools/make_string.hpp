@@ -24,24 +24,24 @@ namespace io_tools{
 		return os.str();
 	}
 
-	template < typename Separator, typename T, typename ... Ts >
+	template < typename Delimiter, typename T, typename ... Ts >
 	inline std::string make_string_separated_by(
-		Separator const& separator,
+		Delimiter const& delimiter,
 		T&& arg,
 		Ts&& ... args
 	){
 		std::ostringstream os;
 		os << std::boolalpha;
 		os << static_cast< T&& >(arg);
-		([&os, &separator](auto&& arg){
-				os << separator << static_cast< decltype(arg)&& >(arg);
+		([&os, &delimiter](auto&& arg){
+				os << delimiter << static_cast< decltype(arg)&& >(arg);
 			}(static_cast< Ts&& >(args)), ...);
 
 		return os.str();
 	}
 
-	template < typename Separator >
-	inline std::string make_string_separated_by(Separator const&){
+	template < typename Delimiter >
+	inline std::string make_string_separated_by(Delimiter const&){
 		return {};
 	}
 
