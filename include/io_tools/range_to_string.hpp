@@ -37,6 +37,14 @@ namespace io_tools{
 		return os.str();
 	}
 
+	template < typename T, std::size_t N >
+	inline std::string range_to_string(
+		T(&range)[N],
+		std::string_view delimiter = ", "
+	){
+		return range_to_string< T(&)[N] >(range, delimiter);
+	}
+
 
 }
 

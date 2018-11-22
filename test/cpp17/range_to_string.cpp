@@ -62,3 +62,22 @@ TEST(range_to_string, list_separator){
 
 	EXPECT_EQ(io_tools::range_to_string(range, "x"), "1x2x3");
 }
+
+
+TEST(range_to_string, c_array_1){
+	int range[1] = {1};
+
+	EXPECT_EQ(io_tools::range_to_string(range), "1");
+}
+
+TEST(range_to_string, c_array_3){
+	int range[3] = {1, 2, 3};
+
+	EXPECT_EQ(io_tools::range_to_string(range), "1, 2, 3");
+}
+
+TEST(range_to_string, c_array_separator){
+	int range[3] = {1, 2, 3};
+
+	EXPECT_EQ(io_tools::range_to_string(range, "x"), "1x2x3");
+}
