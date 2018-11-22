@@ -4,8 +4,10 @@
 set -e
 set -o xtrace
 
+PROJECT_DIR=$(pwd)
+
 # Build test
-cd test
+cd $PROJECT_DIR/test/cpp11
 mkdir -p build
 cd build
 cmake ..
