@@ -115,7 +115,7 @@ Then you need to import the overloads into your scope:
 using namespace ::io_tools::io_std_vector;
 ```
 
-##### Example C-Array I/O
+##### Example `std::vector` I/O
 
 ```cpp
 #include <io_tools/io_std_vector.hpp>
