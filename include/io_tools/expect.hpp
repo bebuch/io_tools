@@ -9,29 +9,25 @@
 #ifndef _io_tools__expect__hpp_INCLUDED_
 #define _io_tools__expect__hpp_INCLUDED_
 
-#include "is_next.hpp"
+#include "extract_if_is.hpp"
 
 
 namespace io_tools{
 
 
-	template < class CharT, class Traits, class ShouldBe >
-	inline bool expect(
-		std::basic_istream< CharT, Traits >& is,
-		ShouldBe const& should_be
-	){
+	template < typename ShouldBe >
+	inline bool expect(std::istream& is, ShouldBe const& should_be){
 		ShouldBe in;
-		if(is && is >> in && in == should_be) return true;
-		is.setstate(std::ios_base::failbit);
-		return false;
+		if(is && is >> in && in == should_be){
+			return true;
+		}else{
+			is.setstate(std::ios_base::failbit);
+			return false;
+		}
 	}
 
-	template < class CharT, class Traits >
-	inline bool expect(
-		std::basic_istream< CharT, Traits >& is,
-		CharT const& should_be
-	){
-		auto result = is_next(is, should_be);
+	inline bool expect(std::istream& is, char const should_be){
+		auto result = extract_if_is(is, should_be);
 		if(!result) is.setstate(std::ios_base::failbit);
 		return result;
 	}

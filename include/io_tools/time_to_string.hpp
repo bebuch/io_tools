@@ -35,14 +35,15 @@ namespace io_tools{
 		auto datetime = *std::localtime(&localtime);
 
 		return os
-			<< std::fixed << std::setfill('0')
-			<< std::setw(4) << 1900 + datetime.tm_year << "-"
-			<< std::setw(2) << 1 + datetime.tm_mon << "-"
-			<< std::setw(2) << datetime.tm_mday << " "
-			<< std::setw(2) << datetime.tm_hour << ":"
-			<< std::setw(2) << datetime.tm_min << ":"
-			<< std::setw(2) << datetime.tm_sec << " "
-			<< std::setw(3) << microseconds.count() / 1000 % 1000 << '.'
+			<< std::fixed << std::setfill(os.widen('0'))
+			<< std::setw(4) << 1900 + datetime.tm_year << os.widen('-')
+			<< std::setw(2) << 1 + datetime.tm_mon << os.widen('-')
+			<< std::setw(2) << datetime.tm_mday << os.widen(' ')
+			<< std::setw(2) << datetime.tm_hour << os.widen(':')
+			<< std::setw(2) << datetime.tm_min << os.widen(':')
+			<< std::setw(2) << datetime.tm_sec << os.widen(' ')
+			<< std::setw(3) << microseconds.count() / 1000 % 1000
+				<< os.widen('.')
 			<< std::setw(3) << microseconds.count() % 1000;
 	}
 

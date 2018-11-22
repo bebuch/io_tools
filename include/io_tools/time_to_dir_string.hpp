@@ -32,7 +32,7 @@ namespace io_tools{
 		auto datetime = *std::localtime(&localtime);
 
 		return os
-			<< std::fixed << std::setfill('0')
+			<< std::fixed << std::setfill(os.widen('0'))
 			<< std::setw(4) << 1900 + datetime.tm_year
 			<< std::setw(2) << 1 + datetime.tm_mon
 			<< std::setw(2) << datetime.tm_mday << "_"

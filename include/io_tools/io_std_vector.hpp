@@ -6,8 +6,8 @@
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at https://www.boost.org/LICENSE_1_0.txt)
 //-----------------------------------------------------------------------------
-#ifndef _io_tools__std_vector_io__hpp_INCLUDED_
-#define _io_tools__std_vector_io__hpp_INCLUDED_
+#ifndef _io_tools__io_std_vector__hpp_INCLUDED_
+#define _io_tools__io_std_vector__hpp_INCLUDED_
 
 #include "expect.hpp"
 
@@ -15,32 +15,27 @@
 #include <vector>
 
 
-namespace io_tools{ namespace std_vector{
+namespace io_tools{ namespace io_std_vector{
 
 
-	template < typename CharT, typename Traits, typename T >
-	std::basic_ostream< CharT, Traits >& operator<<(
-		std::basic_ostream< CharT, Traits >& os,
-		std::vector< T > const& data
-	){
+	template < typename T >
+	std::ostream& operator<<(std::ostream& os, std::vector< T > const& data){
 		os << '{';
 
-		if(data.size() >= 1){
+		if(data.size() > 0){
 			os << data[0];
 			for(std::size_t i = 1; i < data.size(); ++i){
 				os << ',' << data[i];
 			}
 		}
 
-		return os << '}';
+		os << '}';
+
+		return os;
 	}
 
-
-	template < typename CharT, typename Traits, typename T >
-	std::basic_istream< CharT, Traits >& operator>>(
-		std::basic_istream< CharT, Traits >& is,
-		std::vector< T >& data
-	){
+	template < typename T >
+	std::istream& operator>>(std::istream& is, std::vector< T >& data){
 		if(!expect(is, '{')) return is;
 
 		std::vector< T > tmp;
@@ -51,7 +46,7 @@ namespace io_tools{ namespace std_vector{
 		}
 
 		for(;;){
-			if(!is_next(is, ',')){
+			if(!extract_if_is(is, ',')){
 				if(!expect(is, '}')) return is;
 
 				data = std::move(tmp);
