@@ -27,7 +27,6 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 
 
 project(test)
-find_package(Boost REQUIRED)
 
 # Setup testing
 enable_testing()
