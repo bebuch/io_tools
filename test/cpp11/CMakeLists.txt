@@ -36,7 +36,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 # Add test cpp file
-include_directories("../include")
+include_directories("../../include")
 
 file(GLOB SOURCE_FILES "*.cpp")
 
