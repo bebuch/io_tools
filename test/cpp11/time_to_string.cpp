@@ -10,11 +10,15 @@
 
 #include "gtest/gtest.h"
 
+#include "time_zone_offset.hpp"
+
 
 TEST(time_to_string, test){
 	auto time = std::chrono::system_clock::from_time_t(1234567890);
 	time += std::chrono::milliseconds(512);
 	time += std::chrono::microseconds(128);
 
-	EXPECT_EQ(io_tools::time_to_string(time), "2009-02-14 00:31:30 512.128");
+	time -= std::chrono::seconds(time_zone_offset());
+
+	EXPECT_EQ(io_tools::time_to_string(time), "2009-02-13 23:31:30 512.128");
 }
