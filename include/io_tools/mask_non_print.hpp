@@ -20,15 +20,21 @@ namespace io_tools{
 	inline std::string mask_non_print(std::string const& str){
 		std::ostringstream result;
 		for(auto c: str){
-			if(auto d = static_cast< std::uint8_t >(c); d > 127){
-				result << "\\0x";
+			// Mask any UTF-8 characters
+			auto const d = static_cast< std::uint8_t >(c);
+			if(d > 127){
+				result << "\\x";
 				auto nipple_to_hex = [](std::uint8_t e){
-						return e > 9 ? e - 10 + 'A' : e + '0';
+						return static_cast< char >(
+							e < 10
+							? e + '0'
+							: e - 10 + 'A');
 					};
 				result << nipple_to_hex(d >> 4);
 				result << nipple_to_hex(d & 0x0F);
 				continue;
 			}
+
 			switch(c){
 				case 0: result << "\\0"; break;
 				case 1: result << "\\x01"; break;
