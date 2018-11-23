@@ -210,6 +210,18 @@ This tool is not well designed and should be replaced by a better one.
 
 Don't use it!
 
+#### `input_wrapper`
+
+TODO
+
+#### `isubstream`
+
+TODO
+
+#### `substreambuf`
+
+TODO
+
 ## License notice
 
 This software was originally developed privately by Benjamin Buch. All changes are released under the Boost Software License - Version 1.0 and published on GitHub.
