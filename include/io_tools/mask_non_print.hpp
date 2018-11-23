@@ -63,7 +63,7 @@ namespace io_tools{
 				case 24: result << "\\x18"; break;
 				case 25: result << "\\x19"; break;
 				case 26: result << "\\x1A"; break;
-				case 27: result << "\\e"; break;
+				case 27: result << "\\x1B"; break;
 				case 28: result << "\\x1C"; break;
 				case 29: result << "\\x1D"; break;
 				case 30: result << "\\x1E"; break;

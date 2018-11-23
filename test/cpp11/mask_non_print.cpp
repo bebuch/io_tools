@@ -49,7 +49,6 @@ namespace{
 				case 11: out += "\\v"; break;
 				case 12: out += "\\f"; break;
 				case 13: out += "\\r"; break;
-				case 27: out += "\\e"; break;
 				default: out += "\\x" + to_hex(c);
 			}
 		}
