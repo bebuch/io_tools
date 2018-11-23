@@ -10,6 +10,7 @@ All tools are header only. Add the include directory to your header search path.
 - [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for C arrays
 - [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for std::array
 - [I/O operator](#io-operators-for-stdvector-c11) for std::vector
+- [Mask all non-printable and non-ascii characters](#mask_non_printstring) in a string
 
 **Provided C++17 tools**:
 
@@ -198,6 +199,26 @@ Prints every given argument on an `std::ostringstream` separated by `delimiter`.
 int main(){
     std::cout << io_tools::make_string_separated_by(
         "-:-", 0,3, "test", 5, '\n'); // "0.3-:-test-:-5-:-\n"
+}
+
+```
+
+### Excape characters to print them in one line
+
+#### `mask_non_print(string)`
+
+This functions replaces any non-printable and non-ascii character in the string with its hex code or escape sequence version. The hex code is in uppercase and starts with `\x`. (E.g. `\x0F`) The following escape sequences are used instead of the hex code: `\a`, `\b`, `\f`, `\n`, `\r`, `\t` and `\v`. Backslashes are replaced by two backslashes. (`\` -> `\\`)
+
+https://en.cppreference.com/w/cpp/language/escape
+
+This is done byte wise and works also for UTF-8 encoded text because UTF-8 encoded characters are required that any byte in the character is bigger then 127 which makes any byte non-ascii.
+
+```cpp
+#include <io_tools/mask_non_print.hpp>
+#include <iostream>
+
+int main(){
+    std::cout << io_tools::mask_non_print("»test«\n"); // "\\xC2\\xBBtest\\xC2\\xAB\\n"
 }
 
 ```
