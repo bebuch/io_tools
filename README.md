@@ -8,8 +8,8 @@ All tools are header only. Add the include directory to your header search path.
 
 - [Input parsing](#basic-stdistream-tools-c11) helpers
 - [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for C arrays
-- [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for std::array
-- [I/O operator](#io-operators-for-stdvector-c11) for std::vector
+- [I/O operator](#io-operators-for-c-arrays-and-stdarray-c11) for `std::array`
+- [I/O operator](#io-operators-for-stdvector-c11) for `std::vector`
 - [Mask all non-printable and non-ascii characters](#mask_non_printstring) in a string
 
 **Provided C++17 tools**:
