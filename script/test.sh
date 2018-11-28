@@ -25,7 +25,7 @@ test/cpp17/cpp17tests
 make install
 
 # Check install
-git diff --no-index $INSTALL_PATH/include $PROJECT_DIR/include
+git diff --no-index $INSTALL_PATH/include/io_tools $PROJECT_DIR/include/io_tools
 
 CMAKE_FIND_FILE=$INSTALL_PATH/lib/cmake/io_tools/io_tools-config.cmake
 if [ -a $CMAKE_FIND_FILE ]
