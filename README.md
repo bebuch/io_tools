@@ -30,7 +30,7 @@ We don't use `wchar_t` in our code. Because of that **we support `char` only** i
 
 The library is header-only but you can install it via `cmake`.
 
-If you wan't to install it for all users:
+If you want to install it for all users:
 
 ```bash
 cmake /path/to/io_tools
@@ -38,7 +38,7 @@ make
 make install
 ```
 
-If you wan't to install it without root permissions:
+If you want to install it without root permissions:
 
 ```bash
 cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local /path/to/io_tools
