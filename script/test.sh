@@ -39,4 +39,4 @@ mkdir -p $PROJECT_DIR/build-package-test
 cd $PROJECT_DIR/build-package-test
 cmake -DCMAKE_PREFIX_PATH=$PROJECT_DIR/usr ../test-package
 make
-./test
+./test_io_tools_package

@@ -4,7 +4,7 @@ project(test_io_tools_package)
 
 find_package(io_tools REQUIRED)
 
-add_executable(test test.cpp)
+add_executable(${PROJECT_NAME} test.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
