@@ -1,13 +1,13 @@
 # build and test with gcc
 gcc-test:
-  image: tuiqbv/gcc-cmake:latest
+  image: tuiqbv/gcc-gtest:latest
   stage: test
   script:
     - script/test.sh
 
 # build and test with clang
 llvm-test:
-  image: tuiqbv/clang-cmake:latest
+  image: tuiqbv/clang-gtest:latest
   stage: test
   script:
     - script/test.sh
