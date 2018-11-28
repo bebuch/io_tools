@@ -6,10 +6,12 @@ set -o xtrace
 
 PROJECT_DIR=$(pwd)
 
+# Configure Project
+mkdir -p $PROJECT_DIR/build
+cd $PROJECT_DIR/build
+cmake -DCMAKE_INSTALL_PREFIX=$PROJECT_DIR/usr -DIO_TOOLS_BUILD_TESTS=ON ..
+
 # Build test
-mkdir -p build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=$PROJECT_DIR/usr ..
 make
 
 # Run tests
@@ -22,3 +24,19 @@ make install
 
 # Check install
 git diff --no-index $PROJECT_DIR/usr/include $PROJECT_DIR/include
+
+CMAKE_FIND_FILE=$PROJECT_DIR/usr/lib/io_tools/cmake/io_tools-Config.cmake
+if [ -a $CMAKE_FIND_FILE ]
+then
+    echo "$CMAKE_FIND_FILE - Found"
+else
+    echo "$CMAKE_FIND_FILE - Not found"
+    false
+fi
+
+# Check install by example project
+mkdir -p $PROJECT_DIR/build-package-test
+cd $PROJECT_DIR/build-package-test
+cmake -DCMAKE_PREFIX_PATH=$PROJECT_DIR/usr ../test-package
+make
+./test
