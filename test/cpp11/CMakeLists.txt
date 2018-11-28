@@ -1,10 +1,9 @@
 project(test)
 
-
 # Add test cpp file
-file(GLOB SOURCE_FILES "*.cpp")
+file(GLOB CPP11_SOURCE_FILES "../cpp11/*.cpp")
 
-add_executable(cpp11tests ${SOURCE_FILES})
+add_executable(cpp11tests ${CPP11_SOURCE_FILES})
 
 target_link_libraries(cpp11tests PUBLIC io_tools GTest::GTest GTest::Main)
 

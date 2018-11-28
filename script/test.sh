@@ -14,6 +14,7 @@ make
 
 # Run tests
 test/cpp11/cpp11tests
+test/cpp14/cpp14tests
 test/cpp17/cpp17tests
 
 # Install

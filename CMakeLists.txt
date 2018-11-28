@@ -46,6 +46,7 @@ endif()
 # only add if not inside add_subdirectory()
 option(IO_TOOLS_BUILD_TESTS "build all tests" OFF)
 option(IO_TOOLS_BUILD_TESTS_CPP11 "build C++11 tests" OFF)
+option(IO_TOOLS_BUILD_TESTS_CPP14 "build C++14 tests" OFF)
 option(IO_TOOLS_BUILD_TESTS_CPP17 "build C++17 tests" OFF)
 
 if(${IO_TOOLS_BUILD_TESTS} OR ${IO_TOOLS_BUILD_TESTS_CPP11} OR (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
@@ -53,6 +54,13 @@ if(${IO_TOOLS_BUILD_TESTS} OR ${IO_TOOLS_BUILD_TESTS_CPP11} OR (CMAKE_CURRENT_SO
     find_package(GTest REQUIRED)
     add_subdirectory(test/cpp11)
 	add_test(NAME cpp11tests COMMAND cpp11tests)
+endif()
+
+if(${IO_TOOLS_BUILD_TESTS} OR ${IO_TOOLS_BUILD_TESTS_CPP14} OR (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
+    enable_testing()
+    find_package(GTest REQUIRED)
+    add_subdirectory(test/cpp14)
+    add_test(NAME cpp14tests COMMAND cpp14tests)
 endif()
 
 if(${IO_TOOLS_BUILD_TESTS} OR ${IO_TOOLS_BUILD_TESTS_CPP17} OR (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
