@@ -4,33 +4,33 @@ project(io_tools LANGUAGES CXX)
 
 
 # interface target
-add_library(io_tools INTERFACE)
+add_library(${PROJECT_NAME} INTERFACE)
 
 set(CMAKE_CXX_STANDARD 11)
 
-target_include_directories(io_tools
+target_include_directories(${PROJECT_NAME}
     INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
-target_include_directories(io_tools
+target_include_directories(${PROJECT_NAME}
     SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/include>)
-target_compile_definitions(io_tools INTERFACE)
+target_compile_definitions(${PROJECT_NAME} INTERFACE)
 
 
 # Setup package config
 set(INCLUDE_INSTALL_DIR include)
 set(LIB_INSTALL_DIR lib)
-set(CONFIG_PACKAGE_INSTALL_DIR ${LIB_INSTALL_DIR}/cmake/io_tools)
+set(CONFIG_PACKAGE_INSTALL_DIR ${LIB_INSTALL_DIR}/cmake/${PROJECT_NAME})
 
 include(CMakePackageConfigHelpers)
-configure_package_config_file(io_tools-config.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/io_tools-config.cmake
-    INSTALL_DESTINATION ${LIB_INSTALL_DIR}/io_tools/cmake
+configure_package_config_file(${PROJECT_NAME}-config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake
+    INSTALL_DESTINATION ${LIB_INSTALL_DIR}/${PROJECT_NAME}/cmake
     PATH_VARS INCLUDE_INSTALL_DIR)
 
 # Install target
-install(DIRECTORY include/io_tools
+install(DIRECTORY include/${PROJECT_NAME}
     DESTINATION ${INCLUDE_INSTALL_DIR})
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/io_tools-config.cmake
-    DESTINATION ${LIB_INSTALL_DIR}/cmake/io_tools)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake
+    DESTINATION ${LIB_INSTALL_DIR}/cmake/${PROJECT_NAME})
 
 
 # other subdirectories
