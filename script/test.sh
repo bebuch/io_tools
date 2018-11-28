@@ -25,7 +25,7 @@ make install
 # Check install
 git diff --no-index $PROJECT_DIR/usr/include $PROJECT_DIR/include
 
-CMAKE_FIND_FILE=$PROJECT_DIR/usr/lib/io_tools/cmake/io_tools-Config.cmake
+CMAKE_FIND_FILE=$PROJECT_DIR/usr/lib/io_tools/cmake/io_tools-config.cmake
 if [ -a $CMAKE_FIND_FILE ]
 then
     echo "$CMAKE_FIND_FILE - Found"
