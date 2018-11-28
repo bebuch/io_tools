@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12.4)
 
-project(io_tools)
+project(io_tools LANGUAGES CXX)
 
 
 # interface target
