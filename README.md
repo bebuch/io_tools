@@ -26,6 +26,48 @@ https://stackoverflow.com/questions/8168997/using-char16-t-and-char32-t-in-i-o
 
 We don't use `wchar_t` in our code. Because of that **we support `char` only** in the io_tools library functions.
 
+## Build and install
+
+The library is header-only but you can install it via `cmake`.
+
+If you wan't to install it for all users:
+
+```
+cmake /path/to/io_tools
+make
+make install
+```
+
+If you wan't to install it without root permissions:
+
+```
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local /path/to/io_tools
+make
+make install
+```
+
+When you installed the library, you can use `find_package(io_tools)` in your `CMakeLists.txt`. It will define `${io_tools_INCLUDE_DIR}` which you can use in `include_directories` to add the installed library to your header search path.
+
+If you installed it with `CMAKE_INSTALL_PREFIX`, you have to use `CMAKE_PREFIX_PATH` by configuring your own project, otherwise `find_package(io_tools)` will not find `io_tools`.
+
+```
+cmake -DCMAKE_PREFIX_PATH=$HOME/.local /path/to/your/project
+make
+```
+
+### Build tests
+
+```
+cmake -DIO_TOOLS_BUILD_TESTS=ON /path/to/io_tools
+make
+```
+
+Instead of `IO_TOOLS_BUILD_TESTS` which builds all tests, you can test for specific C++ standards by:
+
+- `IO_TOOLS_BUILD_TESTS_CPP11`
+- `IO_TOOLS_BUILD_TESTS_CPP14`
+- `IO_TOOLS_BUILD_TESTS_CPP17`
+
 ## Documentation
 
 ### Basic `std::istream` tools (C++11)
