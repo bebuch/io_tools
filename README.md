@@ -32,7 +32,7 @@ The library is header-only but you can install it via `cmake`.
 
 If you wan't to install it for all users:
 
-```
+```bash
 cmake /path/to/io_tools
 make
 make install
@@ -40,7 +40,7 @@ make install
 
 If you wan't to install it without root permissions:
 
-```
+```bash
 cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local /path/to/io_tools
 make
 make install
@@ -50,14 +50,14 @@ When you installed the library, you can use `find_package(io_tools)` in your `CM
 
 If you installed it with `CMAKE_INSTALL_PREFIX`, you have to use `CMAKE_PREFIX_PATH` by configuring your own project, otherwise `find_package(io_tools)` will not find `io_tools`.
 
-```
+```bash
 cmake -DCMAKE_PREFIX_PATH=$HOME/.local /path/to/your/project
 make
 ```
 
 ### Build tests
 
-```
+```bash
 cmake -DIO_TOOLS_BUILD_TESTS=ON /path/to/io_tools
 make
 ```
