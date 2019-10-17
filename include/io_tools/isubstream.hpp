@@ -29,7 +29,7 @@ namespace io_tools{
 			{}
 
 		isubstream(isubstream const&) = delete;
-		isubstream(isubstream&&) = default;
+		isubstream(isubstream&&) = delete;
 
 	private:
 		substreambuf buffer_;
